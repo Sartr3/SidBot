@@ -1,4 +1,3 @@
-module github.com/Sartr3/SidBot/Botcor
 module main
 
 go 1.21.5
