@@ -1,4 +1,4 @@
-package Botcore
+package botcore
 
 import (
 	"fmt"
