@@ -1,0 +1,2 @@
+# sidbot
+bot for discord
