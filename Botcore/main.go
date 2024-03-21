@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/ed25519"
 	"fmt"
 	"github.com/bwmarrin/discordgo"
 	"os"
