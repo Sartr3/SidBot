@@ -82,7 +82,7 @@ func handleCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	args := parts[1:]
 
 	switch command {
-	case "bora?":
+	case "bora":
 		s.ChannelMessageSend(m.ChannelID, "Bora tomar uma.")
 	case "diz":
 		if len(args) == 0 {
