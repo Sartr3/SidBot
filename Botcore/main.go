@@ -18,7 +18,7 @@ var (
 func init() {
 	// Carrega variável de ambiente;
 	if err := godotenv.Load(); err != nil {
-		fmt.Println("Erro ao carregar o arquivo .env")
+		fmt.Println("Erro ao carregar variável de ambiente.")
 	}
 
 	token = os.Getenv("TOKEN")
@@ -26,23 +26,23 @@ func init() {
 
 func main() {
 	// Cria uma sessão do Discord
-	dg, err := discordgo.New("Bot " + token)
+	sess, err := discordgo.New("Bot " + token)
 	if err != nil {
-		fmt.Println("Error creating Discord session: ", err)
+		fmt.Println("Erro ao conectar bot no disc: ", err)
 		return
 	}
 
 	// Define a função de tratamento para o evento "messageCreate"
-	dg.AddHandler(MessageCreate)
+	sess.AddHandler(MessageCreate)
 
 	// Abre uma conexão com o Discord
-	err = dg.Open()
+	err = sess.Open()
 	if err != nil {
-		fmt.Println("Error opening Discord session: ", err)
+		fmt.Println("Erro ao abrir sessão no disc:  ", err)
 		return
 	}
 
-	fmt.Println("Bot is now running. Press CTRL-C to exit.")
+	fmt.Println("Bot ta milhão. Aperte CTRL + C para Parar o menino.")
 
 	// Espera por um sinal de interrupção
 	sc := make(chan os.Signal, 1)
@@ -50,7 +50,7 @@ func main() {
 	<-sc
 
 	// Encerra conexão com o Discord
-	dg.Close()
+	sess.Close()
 }
 
 func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
@@ -82,7 +82,7 @@ func handleCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	args := parts[1:]
 
 	switch command {
-	case "bora":
+	case "bora?":
 		s.ChannelMessageSend(m.ChannelID, "Bora tomar uma.")
 	case "diz":
 		if len(args) == 0 {
