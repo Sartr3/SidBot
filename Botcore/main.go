@@ -14,15 +14,16 @@ var (
 )
 
 func init() {
-	token = os.Getenv("TOKEN")
-}
-
-func main() {
 
 	// carrega variavel de ambiente;
 	if err := godotenv.Load(); err != nil {
 		fmt.Println("Erro ao carregar o arquivo .env")
 	}
+
+	token = os.Getenv("TOKEN")
+}
+
+func main() {
 
 	// cria uma sessão do discord;
 	dg, err := discordgo.New("Bot " + token)
@@ -56,3 +57,4 @@ func ready(s *discordgo.Session, event *discordgo.Ready) {
 	// função chamada quando o bot estiver pronto;
 	fmt.Println("Bot pronto. Nome: ", s.State.User.Username)
 }
+
