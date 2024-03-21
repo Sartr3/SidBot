@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 	"os"
 	"os/signal"
 	"syscall"
@@ -17,6 +18,12 @@ func init() {
 }
 
 func main() {
+
+	// carrega variavel de ambiente;
+	if err := godotenv.Load(); err != nil {
+		fmt.Println("Erro ao carregar o arquivo .env")
+	}
+
 	// cria uma sessão do discord;
 	dg, err := discordgo.New("Bot " + token)
 	if err != nil {
